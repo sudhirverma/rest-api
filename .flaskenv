@@ -1,0 +1,2 @@
+FLASK_App=app
+FLASK_DEBUG=1
