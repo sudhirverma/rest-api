@@ -51,7 +51,7 @@ class ItemList(MethodView):
     @blp.arguments(ItemSchema)
     @blp.response(201, ItemSchema)
     def post(self, item_data):
-        
+        print("sdfjkhfdkhfkljsdfkljskljsdfkljklsdfjklsfjklsdfjklsdfjklsdfjkldfjklfjdkljdfkljsdfkljfl")
         #it's going to turn the dictionary into keyword arguments
         item = ItemModel(**item_data)
 

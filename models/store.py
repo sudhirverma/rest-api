@@ -21,3 +21,5 @@ class StoreModel(db.Model):
     # Lazy, equal dynamic just means that the items here are not going to be fetched 
     # from the database until we tell it to.
     items = db.relationship("ItemModel", back_populates="store", lazy="dynamic", cascade="all, delete")
+
+    tags = db.relationship("TagModel", back_populates="store", lazy="dynamic")

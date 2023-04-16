@@ -27,3 +27,5 @@ class ItemModel(db.Model):
     # a relationship with the StoreModel class, and it will automatically populate 
     # the store variable with a StoreModel object, whose ID matches that of the foreign key.
     store = db.relationship("StoreModel", back_populates="items")
+
+    # we cannot create an ItemModel until you've created the store that it will be associated
