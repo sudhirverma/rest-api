@@ -29,3 +29,6 @@ class ItemModel(db.Model):
     store = db.relationship("StoreModel", back_populates="items")
 
     # we cannot create an ItemModel until you've created the store that it will be associated
+
+
+    tags = db.relationship("TagModel", back_populates="items", secondary="items_tags")
