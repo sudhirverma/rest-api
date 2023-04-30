@@ -2,12 +2,9 @@ from flask import Flask
 from flask_smorest import Api
 import os
 
-from flask import Flask
-from flask_smorest import Api
-
-from db import db
 import models
 
+from db import db
 from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
@@ -29,7 +26,9 @@ def create_app(db_url=None):
     # swagger-ui path this tell flask smorest to use swagger for api documentation 
     app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
     # swagger-ui URL but it need to load swagger code from some were to display the documentation link of code below 
-    app.config["OPENAPI_SWAGGER_UI_URL"] = "https://npmjs.com/package/swagger-ui-dist"
+    app.config[
+        "OPENAPI_SWAGGER_UI_URL"
+    ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
     # A connection string to our database. All database providers, such as MySQL, Postgres, 
     # PostgreeSQL, SQLite or any other use a connection string that has all the necessary 
@@ -42,8 +41,7 @@ def create_app(db_url=None):
     # connect the Flsk app to SQLAlchemy.
     db.init_app(app)
 
-    @app.before_first_request
-    def create_tables():
+    with app.app_context():
         # it's gonna create all our tables in our database.
         db.create_all()
 
