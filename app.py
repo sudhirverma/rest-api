@@ -1,5 +1,4 @@
 import os
-import secrets
 
 from flask import Flask, jsonify
 from flask_smorest import Api
