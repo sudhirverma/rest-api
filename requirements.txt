@@ -6,3 +6,4 @@ sqlalchemy
 flask-sqlalchemy
 flask-jwt-extended
 passlib # Passlib is a library that we're going to use to hash our passwords.
+Flask-Migrate

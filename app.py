@@ -4,6 +4,7 @@ import secrets
 from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 
 from db import db
 from blocklist import BLOCKLIST
@@ -45,6 +46,26 @@ def create_app(db_url=None):
     # it initializes the Flask SQLAlchemy extension, giving it our Flask app so that it can 
     # connect the Flsk app to SQLAlchemy.
     db.init_app(app)
+    
+    
+    migrate = Migrate(app, db)
+    # flask db includes a subset of commands added by flask-migrate 
+    # that allow us to interact with Alembic
+    
+    # when we do flask db init
+    # it's going to create a migrations folder and inside it, there's a bunch of stuff
+    # The most important one is the versions folder, which is going to contain all the 
+    # changes that we make to our database over time.
+    # alembic.ini is a configuration file.
+    # env.py this is a script used by alembic to generate the migration files,
+    # migration is just a change to our database.
+    # script.py.mako which is template for the migration files.
+    
+    # flask db migrate
+    # this ha generated the first migration and when you type flask db migrate 
+    # what happens is the alembic library will look at the existing database and 
+    # it will compare the existing database with the database defined by your models. 
+    # and it will create a script that allows you to go from one to the other
     
     app.config["JWT_SECRET_KEY"] = "23877789178251158099025942000334528344" # secrets.SystemRandom().getrandbits(128)
     jwt = JWTManager(app)
