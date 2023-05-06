@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 from db import db
 
 # inherit from db.Model
@@ -11,7 +12,7 @@ class ItemModel(db.Model):
     # And this is gonna be an integer column and it's the primary key of the table
     id = db.Column(db.Integer, primary_key=True)
 
-    name = db.Column(db.String(80), unique=True, nullable=False)
+    name = db.Column(db.String(80), unique=False, nullable=False)
 
     description = db.Column(db.String)
     price = db.Column(db.Float(precision=2), unique=False, nullable=False)
