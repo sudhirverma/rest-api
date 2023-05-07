@@ -142,10 +142,6 @@ def create_app(db_url=None):
             401,
         )
 
-    with app.app_context():
-        # it's gonna create all our tables in our database.
-        db.create_all()
-
     # connect the flask smorest extenstion to the flask app
     api = Api(app)
 

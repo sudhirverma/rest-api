@@ -13,7 +13,7 @@ class ItemModel(db.Model):
 
     name = db.Column(db.String(80), unique=True, nullable=False)
     
-    # description = db.Column(db.String)
+    description = db.Column(db.String)
 
     price = db.Column(db.Float(precision=2), unique=False, nullable=False)
 
