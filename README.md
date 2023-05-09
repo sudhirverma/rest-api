@@ -36,3 +36,9 @@ swagger
 ```
 http://127.0.0.1:5000/swagger-ui
 ```
+
+
+https://dashboard.render.com
+
+
+https://rest-apis-flask.teclado.com/
