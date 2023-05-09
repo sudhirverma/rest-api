@@ -1,11 +1,13 @@
 flask
 flask-smorest
 python-dotenv
-flask_smorest
 sqlalchemy
 flask-sqlalchemy
 flask-jwt-extended
-passlib # Passlib is a library that we're going to use to hash our passwords.
-Flask-Migrate
+passlib
+flask-migrate
 gunicorn
 psycopg2
+requests
+rq
+redis

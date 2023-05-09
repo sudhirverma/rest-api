@@ -9,12 +9,13 @@ from schemas import ItemSchema, ItemUpdateSchema
 
 blp = Blueprint("Items", __name__, description="Operations on items")
 
+
 @blp.route("/item/<int:item_id>")
 class Item(MethodView):
     @jwt_required()
     @blp.response(200, ItemSchema)
     def get(self, item_id):
-        #It retrieves the item from the database using the item's primary key.
+        # It retrieves the item from the database using the item's primary key.
         item = ItemModel.query.get_or_404(item_id)
         return item
 
@@ -24,7 +25,7 @@ class Item(MethodView):
         if not jwt.get("is_admin"):
             abort(401, message="Admin privilege required.")
         item = ItemModel.query.get_or_404(item_id)
-        
+
         db.session.delete(item)
         db.session.commit()
 
@@ -43,7 +44,7 @@ class Item(MethodView):
 
         db.session.add(item)
         db.session.commit()
-        
+
         return item
 
 
@@ -58,12 +59,12 @@ class ItemList(MethodView):
     @blp.arguments(ItemSchema)
     @blp.response(201, ItemSchema)
     def post(self, item_data):
-        #it's going to turn the dictionary into keyword arguments
+        # it's going to turn the dictionary into keyword arguments
         item = ItemModel(**item_data)
 
         try:
-            # when we add to the session that is going to put it in a place where 
-            # it's not written into the database file, but it will be written to 
+            # when we add to the session that is going to put it in a place where
+            # it's not written into the database file, but it will be written to
             # the database file when we commit.
             db.session.add(item)
             # And that's what committing does is actually saving to disk.
@@ -72,4 +73,3 @@ class ItemList(MethodView):
             abort(500, "An error occurred whilte inserting the item.")
 
         return item
-

@@ -21,3 +21,18 @@ sudo docker build -t rest-apis-flask-python .
 ```
 sudo docker run -dp 5000:5000 -w /app -v "$(pwd):/app" rest-apis-flask-python
 ```
+
+or
+
+```
+sudo docker run -dp 5000:5000 -w /app -v "$(pwd):/app" rest-apis-flask-python sh -c "flask run --host 0.0.0.0"
+```
+
+```
+sudo docker run -p 5000:80 rest-apis-flask-smorest-rq
+```
+
+swagger
+```
+http://127.0.0.1:5000/swagger-ui
+```
